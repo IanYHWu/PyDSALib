@@ -22,4 +22,7 @@ class Stack(LinkedList):
 
         return first_item.get_data()
 
+    def peek(self):
+        return self.head.get_data()
+
 

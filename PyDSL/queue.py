@@ -29,6 +29,9 @@ class Queue(LinkedList):
 
         return last.get_data()
 
+    def peek(self):
+        return self.tail.get_data()
+
 
 
 
