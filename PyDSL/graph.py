@@ -9,9 +9,6 @@ class Node:
         self.key = key
         self.connections = {}
         self.colour = 'white'
-        self.pred = None
-        self.discovery = 0
-        self.finish = 0
 
     def add_nbr(self, nbr, weight):
         self.connections[nbr] = weight
@@ -30,24 +27,6 @@ class Node:
 
     def get_colour(self):
         return self.colour
-
-    def set_pred(self, node):
-        self.pred = node
-
-    def get_pred(self):
-        return self.pred
-
-    def set_discovery(self, val):
-        self.discovery = val
-
-    def get_discovery(self):
-        return self.discovery
-
-    def set_finish(self, fin):
-        self.finish = fin
-
-    def get_finish(self):
-        return self.finish
 
     def __repr__(self):
         return 'Node {}: contains connections to {}'.format(self.key, self.connections)
