@@ -125,7 +125,7 @@ class BinaryTree:
         if self.root:
             result = self._get(key, self.root)
             if result:
-                return result.val
+                return result
             else:
                 return None
         else:
