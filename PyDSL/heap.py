@@ -4,6 +4,12 @@ class HeapNode:
     def __init__(self, data):
         self.data = data
 
+    def get_data(self):
+        return self.data
+
+    def set_data(self, item):
+        self.data = item
+
     def __lt__(self, other):
         if type(self.data) is float or type(self.data) is int:
             if self.data < other.data:
@@ -15,22 +21,33 @@ class HeapNode:
                 return True
             else:
                 return False
-        else:
-            raise TypeError
 
-     def __gt__(self, other):
-            if type(self.data) is float or type(self.data) is int:
-                if self.data > other.data:
-                    return True
-                else:
-                    return False
-            elif type(self.data) is tuple:
-                if self.data[0] > other.data[0]:
-                    return True
-                else:
-                    return False
+    def __gt__(self, other):
+        if type(self.data) is float or type(self.data) is int:
+            if self.data > other.data:
+                return True
             else:
-                raise TypeError
+                return False
+        elif type(self.data) is tuple:
+            if self.data[0] > other.data[0]:
+                return True
+            else:
+                return False
+
+    def __eq__(self, other):
+        if type(self.data) is float or type(self.data) is int:
+            if self.data == other.data:
+                return True
+            else:
+                return False
+        elif type(self.data) is tuple:
+            if self.data[0] == other.data[0]:
+                return True
+            else:
+                return False
+
+    def __repr__(self):
+        return str(self.data)
 
 
 class MinHeap:
@@ -38,7 +55,7 @@ class MinHeap:
     # MinHeap - the children are always bigger than the parent
 
     def __init__(self):
-        self.heap_list = [0]
+        self.heap_list = [HeapNode(None)]
         self.heap_size = 0
 
     def perlocate_up(self, i):
@@ -48,7 +65,7 @@ class MinHeap:
             i = i // 2
 
     def insert(self, item):
-        self.heap_list.append(item)
+        self.heap_list.append(HeapNode(item))
         self.heap_size += 1
         self.perlocate_up(self.heap_size)
 
@@ -64,12 +81,17 @@ class MinHeap:
                 i = i * 2 + 1
 
     def pop(self):
-        last_item = self.heap_list.pop()
-        min_item = self.heap_list[1]
-        self.heap_list[1] = last_item
-        self.heap_size -= 1
-        self.perlocate_down(1)
-        return min_item
+        if self.heap_size > 1:
+            last_item = self.heap_list.pop()
+            min_item = self.heap_list[1]
+            self.heap_list[1] = last_item
+            self.heap_size -= 1
+            self.perlocate_down(1)
+            return min_item
+        else:
+            min_item = self.heap_list.pop()
+            self.heap_size -= 1
+            return min_item
 
     def delete_item(self, item_index):
         target = self.heap_list[item_index]
@@ -83,12 +105,35 @@ class MinHeap:
         return target
 
     def build(self, new_list):
-        i = len(new_list) // 2
-        self.heap_size = len(new_list)
-        self.heap_list = self.heap_list + new_list
-        while i > 0:
-            self.perlocate_down(i)
-            i -= 1
+        for i in new_list:
+            self.insert(i)
+
+    def heap_change_val(self, val, new_key):
+        for index, item in enumerate(self.heap_list):
+            if index > 0:
+                if item.get_data()[1] == val:
+                    self.delete_item(index)
+        self.insert((new_key, val))
+
+    def __repr__(self):
+        return str([node for node in self.heap_list])
+
+    def __contains__(self, val):
+        contained = False
+        for node in self.heap_list:
+            if type(node.get_data()) is tuple:
+                if node.get_data()[1] == val:
+                    contained = True
+                    break
+            else:
+                if node.get_data() == val:
+                    contained = True
+                    break
+        return contained
+
+    def __iter__(self):
+        return iter(node.get_data() for node in self.heap_list)
+
 
 class MaxHeap:
     """Class for a max heap - a heap with the biggest item on top
@@ -100,7 +145,7 @@ class MaxHeap:
 
     def __init__(self):
         """Initialises the MaxHeap"""
-        self.heap_list = [0]
+        self.heap_list = [HeapNode(None)]
         self.heap_size = 0
 
     def perlocate_up(self, i):
@@ -112,7 +157,7 @@ class MaxHeap:
 
     def insert(self, item):
         """Inserts an item in the correct place in the list"""
-        self.heap_list.append(item)
+        self.heap_list.append(HeapNode(item))
         self.heap_size += 1
         self.perlocate_up(self.heap_size)
 
@@ -129,13 +174,17 @@ class MaxHeap:
                 i = i * 2 + 1
 
     def pop(self):
-        """Removes and returns the item at the top of the list (the maximum number)"""
-        last_item = self.heap_list.pop()
-        max_item = self.heap_list[1]
-        self.heap_list[1] = last_item
-        self.heap_size -= 1
-        self.perlocate_down(1)
-        return max_item
+        if self.heap_size > 1:
+            last_item = self.heap_list.pop()
+            min_item = self.heap_list[1]
+            self.heap_list[1] = last_item
+            self.heap_size -= 1
+            self.perlocate_down(1)
+            return min_item
+        else:
+            min_item = self.heap_list.pop()
+            self.heap_size -= 1
+            return min_item
 
     def delete_item(self, item_index):
         target = self.heap_list[item_index]
@@ -150,24 +199,50 @@ class MaxHeap:
 
     def build(self, new_list):
         """Constructs a MaxHeap given a list of numbers"""
-        i = len(new_list) // 2
-        self.heap_size = len(new_list)
-        self.heap_list = self.heap_list + new_list
-        while i > 0:
-            self.perlocate_down(i)
-            i -= 1
+        for i in new_list:
+            self.insert(i)
+
+    def heap_change_val(self, val, new_key):
+        for index, item in enumerate(self.heap_list):
+            if index > 0:
+                if item.get_data()[1] == val:
+                    self.delete_item(index)
+        self.insert((new_key, val))
+
+    def __repr__(self):
+        return str([node for node in self.heap_list])
+
+    def __contains__(self, val):
+        contained = False
+        for node in self.heap_list:
+            if type(node.get_data()) is tuple:
+                if node.get_data()[1] == val:
+                    contained = True
+                    break
+            else:
+                if node.get_data() == val:
+                    contained = True
+                    break
+        return contained
+
+    def __iter__(self):
+        return iter(node.get_data() for node in self.heap_list)
 
 
 if __name__ == '__main__':
-    bin_heap = MinHeap()
-    new_list = [9, 5, 6, 2, 3, 4, 8]
+    bin_heap = MaxHeap()
+    # new_list = [HeapNode((9, 'dog')), HeapNode((5, 'cat')), HeapNode((6, 'bear')), HeapNode((2, 'horse')),
+    #             HeapNode((3, 'snake')), HeapNode((4, 'ant')), HeapNode((8, 'bird'))]
+    new_list = [(9, 'dog'), (5, 'cat'), (6, 'bear'), (2, 'horse'), (3, 'snake'), (4, 'ant'), (8, 'bird')]
     bin_heap.build(new_list)
-    print(bin_heap.heap_list)
-    bin_heap.insert(1)
-    print(bin_heap.heap_list)
+    print(bin_heap)
+    print(bin_heap)
     print(bin_heap.pop())
     print(bin_heap.pop())
     print(bin_heap.heap_list)
-
+    bin_heap.insert((1, 'Shark'))
     bin_heap.delete_item(3)
     print(bin_heap.heap_list)
+    bin_heap.heap_change_val('cat', 10)
+    print(bin_heap)
+    print('lion' in bin_heap)
