@@ -1,7 +1,4 @@
 
-from PyDSL.queue import Queue
-
-
 class TreeNode:
     """Node class for binary tree
 
@@ -28,6 +25,22 @@ class TreeNode:
         self.left_child = left_child
         self.right_child = right_child
         self.parent = parent
+
+    def get_key(self):
+        """Getter method for key"""
+        return self.key
+
+    def set_key(self, item):
+        """Setter method for key"""
+        self.key = item
+
+    def get_val(self):
+        """Getter method for val"""
+        return self.val
+
+    def set_val(self, item):
+        """Setter method for val"""
+        self.val = item
 
     def get_left_child(self):
         """Getter method for the left child"""
@@ -193,57 +206,6 @@ class BinaryTree:
             height_counter += 1
         return height_counter
 
-    def bfs(self):
-        """Implements breadth-first search of the tree. Returns a list of nodes in order of the search"""
-        bfs_list = []
-        node_queue = Queue()
-        node_queue.enqueue(self.root)
-        while not node_queue.is_empty():
-            current_node = node_queue.dequeue()
-            if current_node.get_left_child():
-                node_queue.enqueue(current_node.get_left_child())
-            if current_node.get_right_child():
-                node_queue.enqueue(current_node.get_right_child())
-            bfs_list.append(current_node)
-
-        return bfs_list
-
-    def preorder(self, current_node=None, order_list=[], root_set=False):
-        """Implements preorder traversal of the tree. Returns a list of nodes in order of the search"""
-        if not current_node and not root_set:
-            root_set = True
-            current_node = self.root
-        if current_node:
-            order_list.append(current_node)
-            self.preorder(current_node=current_node.get_left_child(), root_set=root_set)
-            self.preorder(current_node=current_node.get_right_child(), root_set=root_set)
-
-        return order_list
-
-    def inorder(self, current_node=None, order_list=[], root_set=False):
-        """Implements inorder traversal of the tree. Returns a list of nodes in order of the search"""
-        if not current_node and not root_set:
-            root_set = True
-            current_node = self.root
-        if current_node:
-            self.inorder(current_node=current_node.get_left_child(), root_set=root_set)
-            order_list.append(current_node)
-            self.inorder(current_node=current_node.get_right_child(), root_set=root_set)
-
-        return order_list
-
-    def postorder(self, current_node=None, order_list=[], root_set=False):
-        """Implements postorder traversal of the tree. Returns a list of nodes in order of the search"""
-        if not current_node and not root_set:
-            root_set = True
-            current_node = self.root
-        if current_node:
-            self.postorder(current_node=current_node.get_left_child(), root_set=root_set)
-            self.postorder(current_node=current_node.get_right_child(), root_set=root_set)
-            order_list.append(current_node)
-
-        return order_list
-
     def __setitem__(self, key, val):
         self.put(key, val)
 
@@ -262,14 +224,11 @@ class BinaryTree:
 
 # if __name__ == '__main__':
 #     tree = BinaryTree()
-#     # key_list = [43, 55, 22, 15, 98, 1, 34, 76]
-#     key_list = [1, 2, 3, 4, 5, 6, 7, 8]
+#     key_list = [43, 55, 22, 15, 98, 1, 34, 76]
 #     val_list = ['Penguin', 'Ant', 'Bear', 'Shark', 'Eagle', 'Dog', 'Cat', 'Turtle']
 #
 #     for i, j in zip(key_list, val_list):
 #         tree[i] = j
 #
-#     sortedtree = tree.bfs()
-#     print('+++++++')
-#     for node in sortedtree:
-#         print(node.key)
+#     print(tree[43].get_val())
+#     print(43 in tree)
