@@ -26,7 +26,7 @@ class AVLNode(TreeNode):
         """
         super().__init__(key, val, left_child, right_child, parent)
         self.balance_factor = 0
-        
+
 
 class AVLTree(BinaryTree):
     """AVL tree class
@@ -57,7 +57,7 @@ class AVLTree(BinaryTree):
             else:
                 current_node.left_child = AVLNode(key, val, parent=current_node)
                 self.update_balance(current_node.left_child)
-        elif key > current_node.key:
+        else:
             if current_node.get_right_child():
                 self._put(key, val, current_node.right_child)
             else:
@@ -112,16 +112,15 @@ class AVLTree(BinaryTree):
         else:
             if org_root.parent.left_child == org_root:
                 org_root.parent.left_child = new_root
-            elif org_root.parent.right_child == org_root:
+            else:
                 org_root.parent.right_child = new_root
         new_root.right_child = org_root
         org_root.parent = new_root
-        org_root.balance_factor = org_root.balance_factor - 1 + min(new_root.balance_factor, 0)
-        new_root.balance_factor = new_root.balance_factor - 1 - max(org_root.balance_factor, 0)
+        org_root.balance_factor = org_root.balance_factor - 1 - max(new_root.balance_factor, 0)
+        new_root.balance_factor = new_root.balance_factor - 1 + min(org_root.balance_factor, 0)
 
     def rebalance(self, node):
         """Method to perform rebalancing of the tree"""
-
         if node.balance_factor < 0:
             if node.right_child.balance_factor > 0:
                 self.rotate_right(node.right_child)
