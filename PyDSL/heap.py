@@ -58,7 +58,7 @@ class MinHeap:
         self.heap_list = [HeapNode(None)]
         self.heap_size = 0
 
-    def perlocate_up(self, i):
+    def percolate_up(self, i):
         while i // 2 > 0:
             if self.heap_list[i // 2] > self.heap_list[i]:
                 self.heap_list[i // 2], self.heap_list[i] = self.heap_list[i], self.heap_list[i // 2]
@@ -67,9 +67,9 @@ class MinHeap:
     def insert(self, item):
         self.heap_list.append(HeapNode(item))
         self.heap_size += 1
-        self.perlocate_up(self.heap_size)
+        self.percolate_up(self.heap_size)
 
-    def perlocate_down(self, i):
+    def percolate_down(self, i):
         while i * 2 < self.heap_size:
             if self.heap_list[i * 2] < self.heap_list[i * 2 + 1]:
                 if self.heap_list[i] > self.heap_list[i * 2]:
@@ -86,7 +86,7 @@ class MinHeap:
             min_item = self.heap_list[1]
             self.heap_list[1] = last_item
             self.heap_size -= 1
-            self.perlocate_down(1)
+            self.percolate_down(1)
             return min_item
         else:
             min_item = self.heap_list.pop()
@@ -101,7 +101,7 @@ class MinHeap:
         else:
             self.heap_list[item_index] = last_item
             self.heap_size -= 1
-            self.perlocate_down(item_index)
+            self.percolate_down(item_index)
         return target
 
     def build(self, new_list):
@@ -148,7 +148,7 @@ class MaxHeap:
         self.heap_list = [HeapNode(None)]
         self.heap_size = 0
 
-    def perlocate_up(self, i):
+    def percolate_up(self, i):
         """Moves an item up the list"""
         while i // 2 > 0:
             if self.heap_list[i // 2] < self.heap_list[i]:
@@ -159,9 +159,9 @@ class MaxHeap:
         """Inserts an item in the correct place in the list"""
         self.heap_list.append(HeapNode(item))
         self.heap_size += 1
-        self.perlocate_up(self.heap_size)
+        self.percolate_up(self.heap_size)
 
-    def perlocate_down(self, i):
+    def percolate_down(self, i):
         """Moves an item down the list"""
         while i * 2 < self.heap_size:
             if self.heap_list[i * 2] > self.heap_list[i * 2 + 1]:
@@ -179,7 +179,7 @@ class MaxHeap:
             min_item = self.heap_list[1]
             self.heap_list[1] = last_item
             self.heap_size -= 1
-            self.perlocate_down(1)
+            self.percolate_down(1)
             return min_item
         else:
             min_item = self.heap_list.pop()
@@ -194,7 +194,7 @@ class MaxHeap:
         else:
             self.heap_list[item_index] = last_item
             self.heap_size -= 1
-            self.perlocate_down(item_index)
+            self.percolate_down(item_index)
         return target
 
     def build(self, new_list):
