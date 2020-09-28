@@ -72,14 +72,14 @@ class LinkedList:
         current = self.head
         previous = None
         found = False
-
+        # follow the linked list until the correct node is found
         while not current and not found:
             if current.get_data() == item:
                 found = True
             else:
                 previous = current
                 current = current.get_next()
-             
+        # remove the correct node and then re-link the linked list
         if found and not previous:
             self.head = current.get_next()
         elif found and previous:
@@ -95,7 +95,7 @@ class LinkedList:
         """Search for a node with matching data. Return True if found, False if not"""
         current = self.head
         found = False
-
+        # follow the linked list until the correct node is found
         while not current and not found:
             if current.get_data() == item:
                 found = True
@@ -113,12 +113,12 @@ class LinkedList:
         current = self.head
         previous = None
         count = 0
-
+        # follow the linked list to the correct index
         while count < index and current:
             previous = current
             current = current.get_next()
             count += 1
-
+        # perform insertion
         if previous:
             if current:
                 item_to_add.set_next(current)
