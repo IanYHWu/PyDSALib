@@ -3,16 +3,26 @@ from PyDSL.queue import Queue
 
 
 def bfs(tree):
-    """Implements breadth-first search of the tree. Returns a list of nodes in order of the search"""
+    """Perform breadth-first search of the tree.
+
+    Parameters:
+        tree: the tree to perform BFS on
+
+    Returns:
+        A list of nodes in order of the search
+    """
     bfs_list = []
     node_queue = Queue()
     node_queue.enqueue(tree.root)
     while not node_queue.is_empty():
+        # get the node first-in first-out
         current_node = node_queue.dequeue()
+        # get the children and place into queue
         if current_node.get_left_child():
             node_queue.enqueue(current_node.get_left_child())
         if current_node.get_right_child():
             node_queue.enqueue(current_node.get_right_child())
+        # attach node to list
         bfs_list.append(current_node)
 
     return bfs_list
@@ -20,10 +30,12 @@ def bfs(tree):
 
 def _preorder(tree, current_node=None, order_list=[], root_set=False):
     """Helper method to implement preorder traversal of the tree"""
+    # find the root and set as current_node for first iteration
     if not current_node and not root_set:
         root_set = True
         current_node = tree.root
     if current_node:
+        # search the tree recursively and append the nodes to order_list in preorder fashion
         order_list.append(current_node)
         _preorder(tree, current_node=current_node.get_left_child(), root_set=root_set)
         _preorder(tree, current_node=current_node.get_right_child(), root_set=root_set)
@@ -32,16 +44,25 @@ def _preorder(tree, current_node=None, order_list=[], root_set=False):
 
 
 def preorder(tree):
-    """Implements preorder tree traversal. Returns a list of nodes in order of the search"""
+    """Perform preorder tree traversal.
+
+        Parameters:
+            tree: the tree to perform preorder traversal on
+
+        Returns:
+            A list of nodes in order of the search
+    """
     return _preorder(tree)
 
 
 def _inorder(tree, current_node=None, order_list=[], root_set=False):
     """Helper method to implement inorder traversal of the tree"""
     if not current_node and not root_set:
+        # find the root and set as current_node for first iteration
         root_set = True
         current_node = tree.root
     if current_node:
+        # search the tree recursively and append the nodes to order_list in inorder fashion
         _inorder(tree, current_node=current_node.get_left_child(), root_set=root_set)
         order_list.append(current_node)
         _inorder(tree, current_node=current_node.get_right_child(), root_set=root_set)
@@ -50,16 +71,25 @@ def _inorder(tree, current_node=None, order_list=[], root_set=False):
 
 
 def inorder(tree):
-    """Implements inorder tree traversal. Returns a list of nodes in order of the search"""
+    """Perform inorder tree traversal.
+
+        Parameters:
+            tree: the tree to perform inorder traversal on
+
+        Returns:
+            A list of nodes in order of the search
+    """
     return _inorder(tree)
 
 
 def _postorder(tree, current_node=None, order_list=[], root_set=False):
     """Helper method to implement postorder traversal of the tree"""
     if not current_node and not root_set:
+        # find the root and set as current_node for first iteration
         root_set = True
         current_node = tree.root
     if current_node:
+        # search the tree recursively and append the nodes to order_list in postorder fashion
         _postorder(tree, current_node=current_node.get_left_child(), root_set=root_set)
         _postorder(tree, current_node=current_node.get_right_child(), root_set=root_set)
         order_list.append(current_node)
@@ -68,7 +98,14 @@ def _postorder(tree, current_node=None, order_list=[], root_set=False):
 
 
 def postorder(tree):
-    """Implements postorder tree traversal. Returns a list of nodes in order of the search"""
+    """Perform postorder tree traversal.
+
+        Parameters:
+            tree: the tree to perform postorder traversal on
+
+        Returns:
+            A list of nodes in order of the search
+    """
     return _postorder(tree)
 
 

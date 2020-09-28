@@ -84,13 +84,11 @@ def pretty_print_graph(graph):
 
 if __name__ == '__main__':
     tree = AVLTree()
-    for _ in range(1000):
-        k = randint(100, 200)
-        v = randint(100, 200)
-        tree[k] = v
-
-        # --
-        #   --
-        #     --
-
+    for i in range(0, 50):
+        P = randint(0, 1000)
+        tree.insert_node(P, i)
     pretty_print_tree(tree, 6)
+
+
+
+

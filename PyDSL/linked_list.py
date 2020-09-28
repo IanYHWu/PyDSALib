@@ -13,7 +13,7 @@ class Node:
     """
 
     def __init__(self, init_data):
-        """Initialises the TreeNode object
+        """Initialise the TreeNode object
 
             Arguments:
                 init_data: the data of the node
@@ -23,27 +23,27 @@ class Node:
         self.previous = None
 
     def get_data(self):
-        """Getter method for data"""
+        """Get data of node"""
         return self.data
 
     def get_next(self):
-        """Getter method for next"""
+        """Get the next node"""
         return self.next
 
     def get_prev(self):
-        """Getter method for previous"""
+        """Get the previous node"""
         return self.previous
 
     def set_data(self, input_data):
-        """Setter method for data"""
+        """Set data for the node"""
         self.data = input_data
 
     def set_next(self, input_next):
-        """Setter method for next"""
+        """Set the next node"""
         self.next = input_next
 
     def set_prev(self, input_prev):
-        """Setter method for previous"""
+        """Set the previous node"""
         self.previous = input_prev
 
 
@@ -56,19 +56,19 @@ class LinkedList:
     """
 
     def __init__(self):
-        """Initialises the TreeNode object"""
+        """Initialise the TreeNode object"""
         self.head = None
         self.size = 0
 
     def is_empty(self):
-        """Checks if the linked list is empty"""
+        """Check if the linked list is empty"""
         if self.size == 0:
             return True
         else:
             return False
 
     def remove(self, item):
-        """Removes a node with matching data"""
+        """Remove a node with matching data"""
         current = self.head
         previous = None
         found = False
@@ -88,11 +88,11 @@ class LinkedList:
             raise KeyError('Item not in linked list')
 
     def get_size(self):
-        """Getter method for size"""
+        """Get the size of the LinkedList"""
         return self.size
 
     def search(self, item):
-        """Searches for a node with matching data. Returns True if found, False if not"""
+        """Search for a node with matching data. Return True if found, False if not"""
         current = self.head
         found = False
 
@@ -108,7 +108,7 @@ class LinkedList:
             return True
 
     def insert(self, item, index):
-        """Inserts a node at an index"""
+        """Insert a node at an index"""
         item_to_add = Node(item)
         current = self.head
         previous = None
