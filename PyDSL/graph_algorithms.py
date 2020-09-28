@@ -129,7 +129,6 @@ def prim(graph):
     # place tuple of (node distance, node) into priority queue - this will prioritise based on node distance
     pq.enqueue_list([(node.get_distance(), node) for node in d_graph])
     last_node = None
-
     while pq.get_size() > 0:
         current_node = pq.dequeue().get_data()[1]
         if last_node and current_node.get_distance() != float('inf'):
@@ -139,7 +138,8 @@ def prim(graph):
                                           last_node.get_weight(current_node.get_key()))
         elif current_node.get_distance() == float('inf'):
             # if the current node has distance = inf, start a new spanning tree and set dist = 0
-            span_forest.append(span_tree)
+            if span_tree:
+                span_forest.append(span_tree)
             span_tree = Graph()
             current_node.set_distance(0)
             span_tree.add_node(current_node.get_key())
@@ -350,54 +350,56 @@ if __name__ == '__main__':
 
 
     # g = Graph()
-    # g.add_node('A')
-    # g.add_node('B')
-    # g.add_node('C')
-    # g.add_node('D')
-    # g.add_node('E')
-    # g.add_node('F')
-    # g.add_node('G')
-    #
-    # g.add_undirected_edge('A', 'E', 1)
-    # g.add_undirected_edge('A', 'B', 3)
-    # g.add_undirected_edge('B', 'C', 9)
-    # g.add_undirected_edge('B', 'D', 2)
-    # g.add_undirected_edge('B', 'E', 2)
-    # g.add_undirected_edge('C', 'D', 3)
-    # g.add_undirected_edge('C', 'E', 7)
-    # g.add_undirected_edge('F', 'G', 6)
-    #
-    # minspan = prim(g)
-    # print(minspan)
-    # for i in minspan:
-    #     for j in i:
-    #         print(j)
-    g.add_node('a')
-    g.add_node('b')
-    g.add_node('c')
-    g.add_node('d')
-    g.add_node('e')
-    g.add_node('f')
-    g.add_node('g')
-    g.add_node('h')
-    g.add_node('i')
-    g.add_node('j')
-    g.add_node('k')
+    g.add_node('A')
+    g.add_node('B')
+    g.add_node('C')
+    g.add_node('D')
+    g.add_node('E')
+    g.add_node('F')
+    g.add_node('G')
 
-    g.add_undirected_edge('a', 'c', 3)
-    g.add_undirected_edge('b', 'c', 0)
-    g.add_undirected_edge('c', 'e', 4)
-    g.add_undirected_edge('e', 'd', 0)
-    g.add_undirected_edge('d', 'f', 1)
-    g.add_undirected_edge('e', 'f', 9)
-    g.add_undirected_edge('f', 'g', 3)
-    g.add_undirected_edge('g', 'h', 0)
-    g.add_undirected_edge('f', 'h', 7)
-    g.add_undirected_edge('h', 'i', 6)
-    g.add_undirected_edge('h', 'k', 3)
-    g.add_undirected_edge('k', 'j', 0)
+    g.add_undirected_edge('A', 'E', 1)
+    g.add_undirected_edge('A', 'B', 3)
+    g.add_undirected_edge('B', 'C', 9)
+    g.add_undirected_edge('B', 'D', 2)
+    g.add_undirected_edge('B', 'E', 2)
+    g.add_undirected_edge('C', 'D', 3)
+    g.add_undirected_edge('C', 'E', 7)
+    g.add_undirected_edge('F', 'G', 6)
 
-    spantree = dfs(g)
-    for i in spantree:
+    minspan = prim(g)
+    print(minspan)
+    for i in minspan:
         for j in i:
             print(j)
+
+
+    # g.add_node('a')
+    # g.add_node('b')
+    # g.add_node('c')
+    # g.add_node('d')
+    # g.add_node('e')
+    # g.add_node('f')
+    # g.add_node('g')
+    # g.add_node('h')
+    # g.add_node('i')
+    # g.add_node('j')
+    # g.add_node('k')
+    #
+    # g.add_undirected_edge('a', 'c', 3)
+    # g.add_undirected_edge('b', 'c', 0)
+    # g.add_undirected_edge('c', 'e', 4)
+    # g.add_undirected_edge('e', 'd', 0)
+    # g.add_undirected_edge('d', 'f', 1)
+    # g.add_undirected_edge('e', 'f', 9)
+    # g.add_undirected_edge('f', 'g', 3)
+    # g.add_undirected_edge('g', 'h', 0)
+    # g.add_undirected_edge('f', 'h', 7)
+    # g.add_undirected_edge('h', 'i', 6)
+    # g.add_undirected_edge('h', 'k', 3)
+    # g.add_undirected_edge('k', 'j', 0)
+    #
+    # spantree = dfs(g)
+    # for i in spantree:
+    #     for j in i:
+    #         print(j)
