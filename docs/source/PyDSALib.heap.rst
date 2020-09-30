@@ -1,7 +1,7 @@
 Binary Heap
 =================
 
-.. automodule:: PyDSL.heap
+.. automodule:: PyDSALib.heap
    :members:
    :undoc-members:
    :show-inheritance:

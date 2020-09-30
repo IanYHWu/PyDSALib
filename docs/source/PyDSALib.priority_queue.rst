@@ -1,7 +1,7 @@
-Pretty Printer
+Priority Queue
 ============================
 
-.. automodule:: PyDSL.pretty_printer
+.. automodule:: PyDSALib.priority_queue
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,7 @@
 AVL Tree
 ======================
 
-.. automodule:: PyDSL.AVL_tree
+.. automodule:: PyDSALib.AVL_tree
    :members:
    :undoc-members:
    :show-inheritance:

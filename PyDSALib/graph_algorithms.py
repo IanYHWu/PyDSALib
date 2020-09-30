@@ -1,8 +1,8 @@
-from PyDSL.graph import Graph
-from PyDSL.graph import Node
-from PyDSL.priority_queue import MinPriorityQueue
-from PyDSL.queue import Queue
-from PyDSL.stack import Stack
+from PyDSALib.graph import Graph
+from PyDSALib.graph import Node
+from PyDSALib.priority_queue import MinPriorityQueue
+from PyDSALib.queue import Queue
+from PyDSALib.stack import Stack
 
 
 class DistanceNode(Node):

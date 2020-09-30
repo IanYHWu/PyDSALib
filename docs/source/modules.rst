@@ -1,7 +1,7 @@
-PyDSL
+PyDSALib
 =====
 
 .. toctree::
    :maxdepth: 4
 
-   PyDSL
+   PyDSALib

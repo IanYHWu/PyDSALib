@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'PyDSL'
+project = 'PyDSALib'
 copyright = '2020, Ian Wu'
 author = 'Ian Wu'
 

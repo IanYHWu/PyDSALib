@@ -1,7 +1,7 @@
 Deque
 ==================
 
-.. automodule:: PyDSL.deque
+.. automodule:: PyDSALib.deque
    :members:
    :undoc-members:
    :show-inheritance:

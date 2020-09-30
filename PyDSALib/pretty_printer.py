@@ -1,4 +1,4 @@
-from PyDSL.AVL_tree import AVLTree
+from PyDSALib.AVL_tree import AVLTree
 from random import randint
 from typing import List, Tuple, Callable
 

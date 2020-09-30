@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PyDSALib",
-    version="0.01",
+    version="0.02",
     author="Ian Wu",
     author_email="ianyhwu.97@gmail.com",
     description="A library of data structures, implemented in Python for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/HerrHruby/PyDSL",
+    url="https://github.com/HerrHruby/PyDSALib",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

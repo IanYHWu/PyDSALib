@@ -1,7 +1,7 @@
-Graph
+Queue
 ==================
 
-.. automodule:: PyDSL.graph
+.. automodule:: PyDSALib.queue
    :members:
    :undoc-members:
    :show-inheritance:

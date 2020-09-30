@@ -1,5 +1,5 @@
-from PyDSL.binary_tree import BinaryTree
-from PyDSL.binary_tree import TreeNode
+from PyDSALib.binary_tree import BinaryTree
+from PyDSALib.binary_tree import TreeNode
 
 
 class AVLNode(TreeNode):

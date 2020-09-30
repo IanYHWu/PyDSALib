@@ -1,7 +1,7 @@
-Stack
+Graph
 ==================
 
-.. automodule:: PyDSL.stack
+.. automodule:: PyDSALib.graph
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,5 +1,5 @@
-from PyDSL.linked_list import Node
-from PyDSL.linked_list import LinkedList
+from PyDSALib.linked_list import Node
+from PyDSALib.linked_list import LinkedList
 
 
 class Queue(LinkedList):

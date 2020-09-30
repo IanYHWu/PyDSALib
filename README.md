@@ -1,9 +1,9 @@
-# PyDSLib
+# PyDSALib
 
-PyDSLib is a data structures library, written in Python for Python. It aims to provide an efficient implementation and a 
+PyDSALib is a data structures library, written in Python for Python. It aims to provide an efficient implementation and a 
 convenient interface for each data structure, as well as a selection of useful methods and algorithms to manipulate them.
 
-PyDSLib is very much still in development - see the TODO section. We welcome open-source contributions to help improve
+PyDSALib is very much still in development - see the TODO section. We welcome open-source contributions to help improve
 this library.
 
 Data structures currently supported include:
@@ -27,11 +27,11 @@ Prerequisites:
 
 Installation using pip:
 
-```pip install PyDSALib==0.1```
+```pip install PyDSALib==0.2```
 
 Clone from GitHub:
 
-```git clone https://github.com/HerrHruby/PyDSL.git```
+```git clone https://github.com/HerrHruby/PyDSALib.git```
 
 
 

@@ -1,7 +1,7 @@
 #! usr/bin/env python2.7
 
-from PyDSL.heap import MaxHeap
-from PyDSL.heap import MinHeap
+from PyDSALib.heap import MaxHeap
+from PyDSALib.heap import MinHeap
 
 
 class MaxPriorityQueue(MaxHeap):

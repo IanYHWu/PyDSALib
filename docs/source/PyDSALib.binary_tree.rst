@@ -1,7 +1,7 @@
-Linked List
+Binary Search Tree
 =========================
 
-.. automodule:: PyDSL.linked_list
+.. automodule:: PyDSALib.binary_tree
    :members:
    :undoc-members:
    :show-inheritance:

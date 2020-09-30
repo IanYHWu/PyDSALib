@@ -10,4 +10,4 @@ Installation using pip::
 
 Clone from GitHub::
 
-    git clone https://github.com/HerrHruby/PyDSL.git
+    git clone https://github.com/HerrHruby/PyDSALib.git

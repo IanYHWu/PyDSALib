@@ -1,7 +1,7 @@
-Queue
+Stack
 ==================
 
-.. automodule:: PyDSL.queue
+.. automodule:: PyDSALib.stack
    :members:
    :undoc-members:
    :show-inheritance:

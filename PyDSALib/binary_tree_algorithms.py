@@ -1,5 +1,5 @@
-from PyDSL.binary_tree import BinaryTree
-from PyDSL.queue import Queue
+from PyDSALib.binary_tree import BinaryTree
+from PyDSALib.queue import Queue
 
 
 def bfs(tree):

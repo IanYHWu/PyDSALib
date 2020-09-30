@@ -1,7 +1,7 @@
 Graph Algorithms
 ==============================
 
-.. automodule:: PyDSL.graph_algorithms
+.. automodule:: PyDSALib.graph_algorithms
    :members:
    :undoc-members:
    :show-inheritance:
