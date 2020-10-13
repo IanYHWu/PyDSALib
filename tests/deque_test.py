@@ -2,7 +2,7 @@ import unittest
 from PyDSALib.deque import Deque
 
 
-class MyTestCase(unittest.TestCase):
+class DequeTest(unittest.TestCase):
     @staticmethod
     def setup():
         deque = Deque()
